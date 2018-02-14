@@ -1,0 +1,64 @@
+---
+title: "Word Rec'R Pitch Deck"
+author: "armistead"
+date: "February 14, 2018"
+output: ioslides_presentation
+runtime: shiny
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(warning = FALSE)
+
+library(shiny)
+library(tidyverse)
+library(tm)
+library(shinythemes)
+```
+
+## Word Rec'R
+
+### A Coursera data science track project brought to you by [Johns Hopkins University](https://www.coursera.org/specializations/jhu-data-science) and [Swiftkey](https://swiftkey.com/en).
+
+### Following is an introduction to the natural language processing application for predicting words.
+
+### The hypothesis is that a prediction model can be built based on the dataset [here](http://www.corpora.heliohost.org/)
+
+### Based on testing and research, we find that it is possible with a handful of R packages, but memory issues and prediction accuracy remain a concern.
+
+## Tool Sample
+
+```{r output}
+# Define UI for application that draws a histogram
+shinyUI(navbarPage("A Coursera data science track project brought to you by Johns Hopkins University and Swiftkey",
+                   theme = shinytheme("cerulean"),
+        fluidPage(
+                headerPanel("The Word Rec'R"),
+                
+  sidebarLayout(
+    sidebarPanel(
+            helpText("Enter a word below and the recommended word appears to the right."),
+            textInput("inputText", "Enter your text here:",value = "")
+            #text("By John Armistead Wilson")
+    ),
+    mainPanel(
+            h5("Recommended word:"),
+            verbatimTextOutput("prediction")),
+    position = c("left", "right"), fluid = TRUE 
+  ))
+        )
+)
+```
+
+## Overview
+
+Natural Language Processing requires a great deal of steps. For each trial, one must go through the process of:
+        1. Building a corpus - The act of collecting data and sampling to build a body of documents and terms.
+                - This step also involves cleaning up the dataset by removing white space, punctuation, coonverting characters to lowercase, and more.
+        2. Tokenization - whereby you group the most-commonly used sets of words to generate N-grams.
+        3. Summary statistics - Taking a tally of summary statistics is essential so that you are aware of the any pitfalls, such as exceeding memory capacity.
+        4. Viz - Exploring the data and performing any visualizations could also be insightful.
+        5. App Development - Building the model into a usable tool such as a Shiny App is one of the most effective ways to test and get feedback.
+
+
+
