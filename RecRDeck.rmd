@@ -3,6 +3,9 @@ title: "Word Rec'R Pitch Deck"
 author: "armistead"
 date: "February 14, 2018"
 output: ioslides_presentation
+theme: united
+highlight: tango
+template: quarterly_report.html
 runtime: shiny
 ---
 
@@ -10,55 +13,47 @@ runtime: shiny
 knitr::opts_chunk$set(echo = FALSE)
 knitr::opts_chunk$set(warning = FALSE)
 
+
 library(shiny)
 library(tidyverse)
 library(tm)
 library(shinythemes)
 ```
 
+
 ## Word Rec'R
 
-### A Coursera data science track project brought to you by [Johns Hopkins University](https://www.coursera.org/specializations/jhu-data-science) and [Swiftkey](https://swiftkey.com/en).
+<span class="emphasized">
+An introduction to a Coursera data science track project brought to you by [Johns Hopkins University](https://www.coursera.org/specializations/jhu-data-science) and [Swiftkey](https://swiftkey.com/en).
+</span>
 
-### Following is an introduction to the natural language processing application for predicting words.
+<div class="columns-2">
+### Hypothesis: a prediction model can be built based on the [Heliohost]((http://www.corpora.heliohost.org/)) dataset.
 
-### The hypothesis is that a prediction model can be built based on the dataset [here](http://www.corpora.heliohost.org/)
+#### Based on testing and research, we find that it is possible with a handful of R packages, but memory issues and prediction accuracy remain a concern.
+</div>
 
-### Based on testing and research, we find that it is possible with a handful of R packages, but memory issues and prediction accuracy remain a concern.
+## Challenges
+### Pitfalls and stumbling blocks include
+#### 1. Text conversions from corpus to matrix to data frames and back again.
+#### 2. Package version handling, e.g. tm requires content_transformer in the most recent version.
+#### 3. Size handling, i.e. due to space constraints, I had to make do with a smaller dataset.
 
-## Tool Sample
+### Some helpful links were:
+####[tm Vignette](https://cran.r-project.org/web/packages/tm/vignettes/tm.pdf)
+####[NLP Vignette](https://cran.r-project.org/web/packages/NLP/NLP.pdf)
+####[RBloggers Article](https://www.r-bloggers.com/natural-language-processing-tutorial/)
+####[Stack Overflow Post](https://stackoverflow.com/questions/37344185/r-tm-package-upgrade-error-in-converting-corpus-to-data-frame)
 
-```{r output}
-# Define UI for application that draws a histogram
-shinyUI(navbarPage("A Coursera data science track project brought to you by Johns Hopkins University and Swiftkey",
-                   theme = shinytheme("cerulean"),
-        fluidPage(
-                headerPanel("The Word Rec'R"),
-                
-  sidebarLayout(
-    sidebarPanel(
-            helpText("Enter a word below and the recommended word appears to the right."),
-            textInput("inputText", "Enter your text here:",value = "")
-            #text("By John Armistead Wilson")
-    ),
-    mainPanel(
-            h5("Recommended word:"),
-            verbatimTextOutput("prediction")),
-    position = c("left", "right"), fluid = TRUE 
-  ))
-        )
-)
+## App Screenshot
+#### 
+```{r img}
+knitr::include_graphics('./img.png')
 ```
 
-## Overview
-
-Natural Language Processing requires a great deal of steps. For each trial, one must go through the process of:
-        1. Building a corpus - The act of collecting data and sampling to build a body of documents and terms.
-                - This step also involves cleaning up the dataset by removing white space, punctuation, coonverting characters to lowercase, and more.
-        2. Tokenization - whereby you group the most-commonly used sets of words to generate N-grams.
-        3. Summary statistics - Taking a tally of summary statistics is essential so that you are aware of the any pitfalls, such as exceeding memory capacity.
-        4. Viz - Exploring the data and performing any visualizations could also be insightful.
-        5. App Development - Building the model into a usable tool such as a Shiny App is one of the most effective ways to test and get feedback.
-
-
-
+## Let's stay in touch
+#### Test out my app [here](https://armistead.shinyapps.io/nlp_model/)
+####
+#### Send me feedback on Twitter [@armisteadjohn](wwww.twitter.com/armisteadjohn)
+####
+#### Find me on [Github](www.github.com/armistead)
