@@ -230,6 +230,10 @@ trigramX <- tritermtbl %>%
 saveRDS(bigramX, "./nlp_model/bigram.RData")
 saveRDS(trigramX, "./nlp_model/trigram.RData")
 
+bigramR <- readRDS("./nlp_model/bigram.RData")
+trigramR <- readRDS("./nlp_model/trigram.RData")
+
+
 ```
 
 
